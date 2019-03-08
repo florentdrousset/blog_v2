@@ -1,0 +1,38 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: florent
+ * Date: 2019-03-02
+ * Time: 17:47
+ */
+
+ob_start(); ?>
+
+<main>
+    <h2><?= $article['Title'] ?></h2>
+    <p><?= $article['Contents']?></p>
+    <p>Rédigé par <?= $article['FirstName']. ' ' .$article['LastName'];?></p>
+    <section id="articles">
+        <fieldset>
+            <legend>Ajouter un commentaire</legend>
+            <form action="add_comment.php" method="post" >
+                <input type="text" name="nick">
+                <textarea name="commentText"></textarea>
+                <input type="submit">
+            </form>
+            <hr>
+            <?php foreach ($comments as $comment) {
+                echo '<h4>' . $comment['NickName']. ', '. $comment['CreationTimestamp'] . '</h4>';
+                echo '<p>' . $comment['Contents'] . '</p>';
+            }
+            ?>
+        </fieldset>
+
+    </section>
+
+</main>
+
+<?php
+$body = ob_get_clean();
+include 'template.phtml';
+?>

@@ -1,0 +1,18 @@
+<?php
+
+ob_start(); ?>
+
+<main>
+    <h2>Accueil</h2>
+    <?php
+    foreach ($allArticles as $article) {
+        echo '<h3><a href="index.php?action=post&number='.$article['Id']. '">' . $article['Title'] . '</a></h3>';
+        echo '<p>' . $article['Contents'] . '</p>';
+    }
+
+    ?>
+</main>
+
+<?php $body = ob_get_clean();
+include 'template.phtml';
+?>

@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: florent
+ * Date: 2019-03-02
+ * Time: 17:47
+ */
+
+ob_start(); ?>
+
+<main>
+    <table id="admintable">
+        <a href="index.php?action=newPost">Rédiger un nouvel article</a>
+        <thead>
+        <tr>
+            <td>Titre</td>
+            <td>Texte</td>
+            <td>Auteur</td>
+            <td>Catégorie</td>
+            <td></td>
+        </tr>
+        </thead>
+        <?php foreach($adminContent as $line): ?>
+            <tr>
+                <td><a href="index.php?action=post&amp;number=<?=$line['Id']?>"><?= $line['Title'] ?></a></td>
+                <td><?= $line['Contents'] ?> [...]</td>
+                <td><?= $line['FirstName']. ' ' .$line['LastName'] ?></td>
+                <td><?= $line['Name'] ?></td>
+                <td>
+                    <a href="index.php?action=edit&number=<?=$line['Id'] ?>">Editer</a>
+                    <a href="delete.php?action=delete&number=<?=$line['Id'] ?>">Supprimer</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+</main>
+
+<?php
+$body = ob_get_clean();
+include 'template.phtml';
+?>
