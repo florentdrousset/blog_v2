@@ -36,6 +36,10 @@ function getComments($postId) {
     return $query->fetchAll();
 }
 
-
+function addComments($nick, $text, $id) {
+    $db = dbConnect();
+    $query = $db->prepare('INSERT INTO Comment (NickName, Contents, CreationTimestamp, Post_Id) VALUES (?, ?, NOW(), ?)');
+    $query->execute(array($nick, $text, $id));
+}
 
 ?>

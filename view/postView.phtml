@@ -15,7 +15,7 @@ ob_start(); ?>
     <section id="articles">
         <fieldset>
             <legend>Ajouter un commentaire</legend>
-            <form action="add_comment.php" method="post" >
+            <form action="index.php?action=addComment&amp;number=<?=$_GET['number']?>" method="post" >
                 <input type="text" name="nick">
                 <textarea name="commentText"></textarea>
                 <input type="submit">

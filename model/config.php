@@ -2,7 +2,7 @@
 
 function dbConnect() {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'troiswa');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
         return $db;
     }
     catch (Exception $e) {

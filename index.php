@@ -38,6 +38,9 @@ try {
         elseif ($_GET['action'] == 'edit') {
             editPost($_GET['number']);
         }
+        elseif ($_GET['action'] == 'addComment') {
+            comment($_POST['nick'], $_POST['commentText'], $_GET['number']);
+        }
         else {
             throw new Exception('Aucun identifiant de billet envoyé');
         }

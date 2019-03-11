@@ -13,3 +13,8 @@ function post() {
     require './view/postView.phtml';
 }
 
+function comment($nick, $text, $id) {
+    addComments($nick, $text, $id);
+    header('Location: index.php?action=post&number='. $_GET['number']);
+}
+
