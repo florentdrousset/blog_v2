@@ -44,6 +44,9 @@ try {
         elseif ($_GET['action'] == 'update') {
             update($_GET['number'], $_POST['title'], $_POST['mainText'], $_POST['authorId'], $_POST['categoryId']);
         }
+        elseif ($_GET['action'] == 'delete') {
+            delete($_GET['number']);
+        }
         else {
             throw new Exception('Aucun identifiant de billet envoyé');
         }

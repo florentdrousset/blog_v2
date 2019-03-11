@@ -28,7 +28,7 @@ ob_start(); ?>
                 <td><?= $line['Name'] ?></td>
                 <td>
                     <a href="index.php?action=edit&number=<?=$line['Id'] ?>">Editer</a>
-                    <a href="delete.php?action=delete&number=<?=$line['Id'] ?>">Supprimer</a>
+                    <a href="index.php?action=delete&number=<?=$line['Id'] ?>">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -36,3 +36,8 @@ function update($postId, $title, $text, $authorId, $categoryId) {
     updatePost($postId, $title, $text, $authorId, $categoryId);
     header('Location: index.php?action=post&number='.$_GET['number']);
 }
+
+function delete($postId) {
+    deletePost($postId);
+    header('Location: index.php?action=admin');
+}

@@ -66,3 +66,9 @@ function getPostData()
     $query->execute(array($_GET['number']));
     return $query->fetch();
 }
+
+function deletePost($postId) {
+    $db = dbConnect();
+    $query = $db->prepare('DELETE FROM Post WHERE Id = ?');
+    $query->execute(array($postId));
+}
