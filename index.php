@@ -41,6 +41,9 @@ try {
         elseif ($_GET['action'] == 'addComment') {
             comment($_POST['nick'], $_POST['commentText'], $_GET['number']);
         }
+        elseif ($_GET['action'] == 'update') {
+            update($_GET['number'], $_POST['title'], $_POST['mainText'], $_POST['authorId'], $_POST['categoryId']);
+        }
         else {
             throw new Exception('Aucun identifiant de billet envoyé');
         }

@@ -35,15 +35,15 @@ function getCategoryInfo() {
     return $query->fetchAll();
 }
 
-function updatePost() {
+function updatePost($postId, $title, $text, $authorId, $categoryId) {
     $db = dbConnect();
     $query = $db->prepare('UPDATE Post SET Title = :title, Contents = :text, CreationTimeStamp = NOW(), Author_Id = :authorId, Category_Id = :categoryId WHERE Id= :id');
     $query->execute(array(
-        'title' => $_POST['title'],
-        'text' => $_POST['mainText'],
-        'authorId' => $_POST['authorId'],
-        'categoryId' => $_POST['categoryId'],
-        'id' => $_POST['number']));
+        'title' => $title,
+        'text' => $text,
+        'authorId' => $authorId,
+        'categoryId' => $categoryId,
+        'id' => $postId));
 }
 
 function insertNewPost($title, $text, $authorId, $categoryId) {
@@ -56,5 +56,13 @@ function getLastPostId() {
     $db = dbConnect();
     $query = $db->prepare('SELECT Id FROM Post ORDER BY Id DESC');
     $query->execute();
+    return $query->fetch();
+}
+
+function getPostData()
+{
+    $db = dbConnect();
+    $query = $db->prepare('SELECT Id, Title, Contents FROM Post WHERE Id = ?');
+    $query->execute(array($_GET['number']));
     return $query->fetch();
 }

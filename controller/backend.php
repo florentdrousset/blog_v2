@@ -26,5 +26,13 @@ function addPost($title, $text, $authorId, $categoryId) {
 }
 
 function editPost($postId) {
+    $postData = getPostData($postId);
+    $categoryInfo = getCategoryInfo();
+    $authorInfo = getAuthorInfo();
+    require './view/editView.phtml';
+}
 
+function update($postId, $title, $text, $authorId, $categoryId) {
+    updatePost($postId, $title, $text, $authorId, $categoryId);
+    header('Location: index.php?action=post&number='.$_GET['number']);
 }

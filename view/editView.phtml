@@ -1,0 +1,27 @@
+<main>
+    <section id="newarticle">
+        <fieldset>
+            <legend>Article</legend>
+            <form action="./index.php?action=update&amp;number=<?=$_GET['number']?>" method="post" >
+                <input type="text" name="title" placeholder="<?= $postData['Title']; ?>">
+                <textarea name="mainText"><?= $postData['Contents']; ?></textarea>
+                <select name="authorId">
+                    <?php
+                    foreach($authorInfo as $author) {
+                        echo '<option name="authorId" value="'.$author['Id']. '">' . $author['FirstName'].' '. $author['LastName'] . '</option>';
+                    }
+                    ?>
+                </select>
+                <select name="categoryId">
+                    <?php
+                    foreach($categoryInfo as $category) {
+                        echo '<option name="authorId" value="'.$category['Id']. '">' . $category['Name'] . '</option>';
+                    }
+                    ?>
+                </select>
+<input type="hidden" name="number" value="30">
+<input type="submit">
+</form>
+</fieldset>
+</section>
+</main>
